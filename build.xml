@@ -1,8 +1,32 @@
 <project>
-
+    
+<property name="src.java.dir" location="./src"/>
+<property name="result.dir" location="./target"/>
+<property name="result.javaclasses.dir" location="${result.dir}/classes"/>
+    
+    <property name="sonar.jdbc.username" value="sonar" />
+    <property name="sonar.jdbc.password" value="sonar" />
+    <property name="sonar.host.url" value="http://localhost:9000" />
+    <property name="sonar.projectKey" value="org.sonarqube:sonarqube-sccaner-ant" />
+    <property name="sonar.projectName" value="example" />
+    <property name="sonar.projectVersion" value="1.0" />
+    <property name="sonar.language" value="java" />
+    <property name="sonar.sources" value="org.sonarqube:sonarqube-sccaner-ant" />
+    <property name="sonar.java.binaries" value="./target" />
+    
+    
     <target name="compile">
-        <mkdir dir="build/classes"/>
-        <javac srcdir="src" destdir="build/classes"/>
-    </target>
-
+       <mkdir dir="${result.javaclasses.dir}"/>
+<javac srcdir="${src.java.dir}" destdir="${result.javaclasses.dir}" debug="true"
+includeantruntime="false">
+        </javac>
+    
+</target>
+    <target name="sonar" depends="compile">
+        <taskdef url="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+            <classpath path="C:/Users/hp/Downloads/sonarqube-7.0/lib/scanner/sonar-scanner-engine-shaded-7.0.jar"/>
+                <sonar:sonar/>
+                
+                </target>
+            <target name="all" depends="compile,sonar"/>
 </project>
