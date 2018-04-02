@@ -23,7 +23,7 @@ includeantruntime="false">
     
 </target>
     <target name="sonar" depends="compile">
-        <taskdef url="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+        <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
             <classpath path="C:/Users/hp/Downloads/sonarqube-7.0/lib/scanner/sonar-scanner-engine-shaded-7.0.jar"/>
         </taskdef>
                 <sonar:sonar/>
